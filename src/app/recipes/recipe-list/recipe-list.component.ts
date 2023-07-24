@@ -12,7 +12,7 @@ import { RecipeService } from '../recipe.service';
 export class RecipeListComponent implements OnInit {
   recipes: Recipe[];
 
-  constructor(private recipeService: RecipeService
+  constructor(private recipeService: RecipeService, private router: Router, private route: ActivatedRoute
               ) {
   }
 
@@ -21,4 +21,7 @@ export class RecipeListComponent implements OnInit {
   }
 
 
+  onNewRecipe() {
+    this.router.navigate(['new'], {relativeTo: this.route});
+  }
 }
