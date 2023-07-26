@@ -35,7 +35,7 @@ editedItemIndex: number
    );
   }
 
-  onAddItem(form: NgForm) {
+  onSubmitItem(form: NgForm) {
     const value = form.value
     const newIngredient = new Ingredient(value.name, value.amount);
     if(this.editMode){
@@ -52,4 +52,13 @@ editedItemIndex: number
     this.subscription.unsubscribe();
   }
 
+  onClear() {
+    this.slForm.reset()
+    this.editMode = false;
+  }
+
+  onDelete() {
+    this.onClear();
+    this.slService.deleteIngredient(this.editedItemIndex);
+  }
 }
